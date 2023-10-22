@@ -5,9 +5,9 @@ const Header = () => {
   return (
     <header className="bg-[#000]">
       <nav className="flex justify-between">
-        <div className="">
+        <div className="flex px-8 py-3 items-center">
           <Link to="/">
-            <img className="w-96 h-30" src={logo} alt="Logo Image" />
+            <img className="w-56" src={logo} alt="Logo Image" />
           </Link>
         </div>
 
