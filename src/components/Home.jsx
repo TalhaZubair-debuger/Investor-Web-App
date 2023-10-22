@@ -51,12 +51,16 @@ const Home = () => {
               We offer an Application to distributor to manage their
               <br /> buying and selling, also asset them take investments.
             </p> */}
-            <img className="h-[35rem]" src={appFeaturesImage} alt="app image" />
+            <img
+              className="h-[35rem] w-[40rem]"
+              src={appFeaturesImage}
+              alt="app image"
+            />
             <Button>Download App</Button>
           </div>
           <div className="w-[50%] flex justify-center items-center">
             <img
-              className="h-[40rem] w-[]"
+              className="h-[40rem]"
               src={image1}
               alt="Distributors App image"
             />
@@ -65,7 +69,7 @@ const Home = () => {
       </section>
 
       {/* Investor Portal */}
-      <section className="text-center bg-emerald-700 py-14">
+      <section className="text-center  py-14">
         <h4 className="text-5xl pb-5 uppercase font-semibold">
           Are you Investor ?
         </h4>
