@@ -75,17 +75,79 @@ const Home = () => {
         </h4>
         <p className="text-xl">Here are few companies you can invest in</p>
         <Carousel className="py-20" responsive={responsive}>
-          <div>Item 1</div>
-          <div>Item 2</div>
-          <div>Item 3</div>
-          <div>Item 4</div>
-          <div>Item 5</div>
+          <div className="item-carousal-home">
+            <div className="company-name-carousal">
+              M&P
+            </div>
+            <div className="meta-desc-company-carousal">
+              We make sure to deliver deliberately.
+            </div>
+            <div className="investment-required-carousal">
+              Investment Required: <b>Rs.250000</b>
+            </div>
+            <button className="see-more-carousal">
+              See More Info
+            </button>
+          </div>
+          <div className="item-carousal-home">
+            <div className="company-name-carousal">
+              M&P
+            </div>
+            <div className="meta-desc-company-carousal">
+              We make sure to deliver deliberately.
+            </div>
+            <div className="investment-required-carousal">
+              Investment Required: <b>Rs.250000</b>
+            </div>
+            <button className="see-more-carousal">
+              See More Info
+            </button>
+          </div>
+          <div className="item-carousal-home">
+            <div className="company-name-carousal">
+              M&P
+            </div>
+            <div className="meta-desc-company-carousal">
+              We make sure to deliver deliberately.
+            </div>
+            <div className="investment-required-carousal">
+              Investment Required: <b>Rs.250000</b>
+            </div>
+            <button className="see-more-carousal">
+              See More Info
+            </button>
+          </div>
+          <div className="item-carousal-home">
+            <div className="company-name-carousal">
+              M&P
+            </div>
+            <div className="meta-desc-company-carousal">
+              We make sure to deliver deliberately.
+            </div>
+            <div className="investment-required-carousal">
+              Investment Required: <b>Rs.250000</b>
+            </div>
+            <button className="see-more-carousal">
+              See More Info
+            </button>
+          </div>
+          <div className="item-carousal-home">
+            <div className="company-name-carousal">
+              M&P
+            </div>
+            <div className="meta-desc-company-carousal">
+              We make sure to deliver deliberately.
+            </div>
+            <div className="investment-required-carousal">
+              Investment Required: <b>Rs.250000</b>
+            </div>
+            <button className="see-more-carousal">
+              See More Info
+            </button>
+          </div>
         </Carousel>
         <Button>Explore More Companies</Button>
       </section>
-
-      {/* Footer Section */}
-      <Footer />
     </div>
   );
 };

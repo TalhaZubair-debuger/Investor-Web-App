@@ -7,6 +7,7 @@ import InvestorDashboard from "./components/InvestorDashboard";
 import AppLayout from "./layout/AppLayout";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
+import Distributors from "./components/Distributors";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       },
       { path: "/invertorDashboard", element: <InvestorDashboard /> },
       { path: "/signup", element: <Signup /> },
+      { path: "/distributors", element: <Distributors /> },
       { path: "/signin", element: <Signin /> },
     ],
   },

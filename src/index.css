@@ -1,3 +1,166 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.item-carousal-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    width: 300px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 3px 3px 2px #a8a8a8;
+    padding: 5px;
+}
+
+.item-carousal-home .company-name-carousal {
+    width: 100%;
+    justify-content: left;
+    text-align: left;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.item-carousal-home .meta-desc-company-carousal {
+    width: 100%;
+    justify-content: left;
+    text-align: justify;
+    font-size: smaller;
+}
+
+.item-carousal-home .investment-required-carousal {
+    width: 100%;
+    justify-content: left;
+    text-align: justify;
+    background-color: greenyellow;
+    margin: 5px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+.item-carousal-home .see-more-carousal {
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: purple;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.header-distributors {
+    /* display: flex; */
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    background-color: lightsteelblue;
+}
+
+.header-distributors .heading-header-distributors {
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+
+.list-distributors-main {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+}
+
+.list-distributors-main .item {
+    width: 90%;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    margin: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.description {
+    padding-left: 5px;
+}
+
+.distributor-image-distributors {
+    width: 200px;
+}
+
+.distributor-name-distributors {
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.distributor-meta-desc-distributors {
+    padding-left: 10px;
+    font-size: small;
+}
+
+.distributor-best-products-distributors {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.distributor-best-products-distributors .product-tags {
+    background-color: lightsteelblue;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px;
+}
+
+.distributor-sales-distributors {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.distributor-sales-distributors .sales {
+    /* display: flex; */
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+}
+
+.distributor-sales-distributors .sales .recent-sales {
+    background-color: lightcoral;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.distributor-sales-distributors .prediction {
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+}
+
+.prediction .predicted-sales {
+    background-color: lightgreen;
+    border-radius: 5px;
+    padding: 5px;
+}
+.distributor-see-more-distributors {
+    width: 150px;
+    background-color: #a8a8a8;
+    font-weight: 600;
+    padding: 5px;
+    margin: 10px 0 0 0;
+    border-radius: 5px;
+}
+.distributor-investment-demanded-distributors{
+
+}
