@@ -153,6 +153,7 @@
     border-radius: 5px;
     padding: 5px;
 }
+
 .distributor-see-more-distributors {
     width: 150px;
     background-color: #a8a8a8;
@@ -161,6 +162,92 @@
     margin: 10px 0 0 0;
     border-radius: 5px;
 }
-.distributor-investment-demanded-distributors{
 
+
+/* Portfolio page css */
+.distributor-portfolio-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.distributor-portfolio-main .top-section {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.distributor-portfolio-main .top-section .left .left {
+    width: 100%;
+}
+
+.distributor-portfolio-main .top-section .right {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.distributor-portfolio-main .top-section .right .distributor-name{
+    font-size: xx-large;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.distributor-portfolio-main .top-section .right .meta-description{
+    color: grey;
+}
+.distributor-portfolio-main .top-section .right .sales{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.distributor-portfolio-main .top-section .right .sales .previous-sales {
+margin: 10px 0 10px 0;
+}
+.sales-badge {
+    background-color: lightseagreen;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+.distributor-portfolio-main .top-section .right .sales .current-holdings {
+    margin: 10px 0 10px 0;
+}
+.distribution-products {
+    width: 100%;
+    padding: 20px;
+}
+.distribution-products .heading {
+    font-size: xx-large;
+    font-weight: 600;
+}
+.distribution-products .list {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    align-items: center;
+}
+.distribution-products .list .product-item{
+    width: 300px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+.distribution-products .list .product-item .row {
+    display: flex;
+    flex-direction: row;
+}
+.distribution-products .list .product-item .row .revenue-generated {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.distribution-products .list .product-item .row .revenue-generated .sales-badge{
+    width: 75%;
+    margin: auto;
 }
