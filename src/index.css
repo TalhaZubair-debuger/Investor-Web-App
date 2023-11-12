@@ -189,22 +189,27 @@
     flex-direction: column;
     padding: 20px;
 }
-.distributor-portfolio-main .top-section .right .distributor-name{
+
+.distributor-portfolio-main .top-section .right .distributor-name {
     font-size: xx-large;
     font-weight: 600;
     margin-bottom: 10px;
 }
-.distributor-portfolio-main .top-section .right .meta-description{
+
+.distributor-portfolio-main .top-section .right .meta-description {
     color: grey;
 }
-.distributor-portfolio-main .top-section .right .sales{
+
+.distributor-portfolio-main .top-section .right .sales {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .distributor-portfolio-main .top-section .right .sales .previous-sales {
-margin: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
+
 .sales-badge {
     background-color: lightseagreen;
     color: #fff;
@@ -214,40 +219,167 @@ margin: 10px 0 10px 0;
     padding: 5px;
     border-radius: 5px;
 }
+
 .distributor-portfolio-main .top-section .right .sales .current-holdings {
     margin: 10px 0 10px 0;
 }
+
 .distribution-products {
     width: 100%;
     padding: 20px;
 }
+
 .distribution-products .heading {
     font-size: xx-large;
     font-weight: 600;
 }
+
 .distribution-products .list {
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: center;
     align-items: center;
 }
-.distribution-products .list .product-item{
+
+.distribution-products .list .product-item {
     width: 300px;
     border: 1px solid lightgray;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
 }
+
 .distribution-products .list .product-item .row {
     display: flex;
     flex-direction: row;
 }
+
 .distribution-products .list .product-item .row .revenue-generated {
     display: flex;
     flex-direction: column;
     width: 50%;
 }
-.distribution-products .list .product-item .row .revenue-generated .sales-badge{
+
+.distribution-products .list .product-item .row .revenue-generated .sales-badge {
     width: 75%;
     margin: auto;
+}
+
+.font-bold-and-larger {
+    font-size: larger;
+    font-weight: 600;
+}
+
+.invest-section-portfolio {
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: lightcyan;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invest-section-portfolio .invest-now {
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: lightgreen;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-investnow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.main-investnow .terms {
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    margin: 20px;
+    padding: 10px;
+    background-color: lightcyan;
+    border-radius: 5px;
+}
+
+.main-investnow .terms .heading {
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.main-investnow .equity {
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    background-color: lightgreen;
+    border-radius: 5px;
+}
+
+.main-investnow .invest-btn {
+    background-color: lightslategray;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.signin-investor-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.signin-investor-main .header {
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.signin-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgreen;
+    width: 400px;
+    border-radius: 5px;
+}
+
+.signin-form label {
+    width: 100%;
+    text-align: justify;
+    margin-top: 10px;
+}
+.signin-form .input-text{
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 30px;
+}
+.signin-form .btn-signin{
+    width: 150px;
+    background-color: lightslategray;
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 5px;
+}
+.signin-form .not-signedin{
+    margin-top: 10px;
+    font-size: smaller;
 }

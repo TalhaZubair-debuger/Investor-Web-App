@@ -9,6 +9,8 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Distributors from "./components/Distributors";
 import DistributorPortfolio from "./components/DistributorPortfolio";
+import InvestCheckout from "./components/InvestCheckout";
+import SignInDistributor from "./components/SignInDistributor";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +32,9 @@ const router = createBrowserRouter([
       { path: "/signup", element: <Signup /> },
       { path: "/distributors", element: <Distributors /> },
       { path: "/distributor-portfolio", element: <DistributorPortfolio /> },
+      { path: "/invest-now", element: <InvestCheckout /> },
       { path: "/signin", element: <Signin /> },
+      { path: "/signin-distributor", element: <SignInDistributor /> },
     ],
   },
 ]);
