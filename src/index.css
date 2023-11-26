@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
 .item-carousal-home {
     display: flex;
     flex-direction: column;
@@ -336,50 +345,20 @@
     font-weight: 600;
 }
 
-.signin-investor-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
-.signin-investor-main .header {
-    font-size: x-large;
-    font-weight: 600;
-}
 
-.signin-form {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: lightgreen;
-    width: 400px;
-    border-radius: 5px;
-}
 
-.signin-form label {
-    width: 100%;
-    text-align: justify;
-    margin-top: 10px;
-}
-.signin-form .input-text{
-    width: 100%;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 30px;
-}
-.signin-form .btn-signin{
+
+
+
+
+
+
+
+.signin-form .btn-signin {
     width: 150px;
     background-color: lightslategray;
     margin-top: 20px;
     height: 40px;
     border-radius: 5px;
-}
-.signin-form .not-signedin{
-    margin-top: 10px;
-    font-size: smaller;
 }

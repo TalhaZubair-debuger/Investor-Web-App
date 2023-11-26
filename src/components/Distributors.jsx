@@ -1,13 +1,12 @@
-import React from "react";
 import mnp from "../assets/m&p.png";
 import unileverLogo from "../assets/unilever-logo.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Distributors = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handlePortfolioNavigation = () => {
     navigate("/distributor-portfolio");
-  }
+  };
   return (
     <div className="w-screen">
       <div className="header-distributors">
@@ -47,7 +46,10 @@ const Distributors = () => {
             <div className="distributor-investment-demanded-distributors">
               Investment Required: <b>Rs.1,00,000</b>
             </div>
-            <button className="distributor-see-more-distributors" onClick={handlePortfolioNavigation}>
+            <button
+              className="distributor-see-more-distributors"
+              onClick={handlePortfolioNavigation}
+            >
               Invest Now
             </button>
           </div>
@@ -83,7 +85,10 @@ const Distributors = () => {
             <div className="distributor-investment-demanded-distributors">
               Investment Required: <b>Rs.100,000,000</b>
             </div>
-            <button className="distributor-see-more-distributors" onClick={handlePortfolioNavigation}>
+            <button
+              className="distributor-see-more-distributors"
+              onClick={handlePortfolioNavigation}
+            >
               Invest Now
             </button>
           </div>
@@ -117,7 +122,10 @@ const Distributors = () => {
             <div className="distributor-investment-demanded-distributors">
               Investment Required: <b>Rs.1,00,000</b>
             </div>
-            <button className="distributor-see-more-distributors" onClick={handlePortfolioNavigation}>
+            <button
+              className="distributor-see-more-distributors"
+              onClick={handlePortfolioNavigation}
+            >
               Invest Now
             </button>
           </div>

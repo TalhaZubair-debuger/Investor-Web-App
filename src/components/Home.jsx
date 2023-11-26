@@ -3,10 +3,10 @@ import Button from "./Button";
 
 import image1 from "../assets/distributor image.png";
 import appFeaturesImage from "../assets/Features.png";
-import Footer from "./Footer";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import CarouselItem from "./CarouselItem";
 
 const Home = () => {
   const responsive = {
@@ -28,7 +28,7 @@ const Home = () => {
     },
   };
   return (
-    <div className="w-screen">
+    <div>
       <Banner />
       {/* About company section */}
       <div className="text-center  bg-[#ccc]">
@@ -40,17 +40,15 @@ const Home = () => {
           your business growth.
         </p>
       </div>
+
       {/* Distributor App Section */}
+
       <section className=" bg-slate-300 pt-10">
         <h3 className="text-6xl font-semibold uppercase text-center">
           Distributor App
         </h3>
         <div className="flex py-10">
           <div className="flex flex-col items-center justify-center w-[50%]">
-            {/* <p className="text-lg py-5">
-              We offer an Application to distributor to manage their
-              <br /> buying and selling, also asset them take investments.
-            </p> */}
             <img
               className="h-[35rem] w-[40rem]"
               src={appFeaturesImage}
@@ -69,81 +67,67 @@ const Home = () => {
       </section>
 
       {/* Investor Portal */}
+
       <section className="text-center  py-14">
         <h4 className="text-5xl pb-5 uppercase font-semibold">
           Are you Investor ?
         </h4>
         <p className="text-xl">Here are few companies you can invest in</p>
         <Carousel className="py-20" responsive={responsive}>
-          <div className="item-carousal-home">
-            <div className="company-name-carousal">
-              M&P
-            </div>
+          <CarouselItem />
+          {/* <div className="item-carousal-home">
+            <div className="company-name-carousal">M&P</div>
             <div className="meta-desc-company-carousal">
               We make sure to deliver deliberately.
             </div>
             <div className="investment-required-carousal">
               Investment Required: <b>Rs.250000</b>
             </div>
-            <button className="see-more-carousal">
-              See More Info
-            </button>
+            <button className="see-more-carousal">See More Info</button>
+          </div> */}
+
+          {/* 2 */}
+
+          {/* <div className="item-carousal-home">
+            <div className="company-name-carousal">M&P</div>
+            <div className="meta-desc-company-carousal">
+              We make sure to deliver deliberately.
+            </div>
+            <div className="investment-required-carousal">
+              Investment Required: <b>Rs.250000</b>
+            </div>
+            <button className="see-more-carousal">See More Info</button>
+          </div> */}
+
+          <div className="item-carousal-home">
+            <div className="company-name-carousal">M&P</div>
+            <div className="meta-desc-company-carousal">
+              We make sure to deliver deliberately.
+            </div>
+            <div className="investment-required-carousal">
+              Investment Required: <b>Rs.250000</b>
+            </div>
+            <button className="see-more-carousal">See More Info</button>
           </div>
           <div className="item-carousal-home">
-            <div className="company-name-carousal">
-              M&P
-            </div>
+            <div className="company-name-carousal">M&P</div>
             <div className="meta-desc-company-carousal">
               We make sure to deliver deliberately.
             </div>
             <div className="investment-required-carousal">
               Investment Required: <b>Rs.250000</b>
             </div>
-            <button className="see-more-carousal">
-              See More Info
-            </button>
+            <button className="see-more-carousal">See More Info</button>
           </div>
           <div className="item-carousal-home">
-            <div className="company-name-carousal">
-              M&P
-            </div>
+            <div className="company-name-carousal">M&P</div>
             <div className="meta-desc-company-carousal">
               We make sure to deliver deliberately.
             </div>
             <div className="investment-required-carousal">
               Investment Required: <b>Rs.250000</b>
             </div>
-            <button className="see-more-carousal">
-              See More Info
-            </button>
-          </div>
-          <div className="item-carousal-home">
-            <div className="company-name-carousal">
-              M&P
-            </div>
-            <div className="meta-desc-company-carousal">
-              We make sure to deliver deliberately.
-            </div>
-            <div className="investment-required-carousal">
-              Investment Required: <b>Rs.250000</b>
-            </div>
-            <button className="see-more-carousal">
-              See More Info
-            </button>
-          </div>
-          <div className="item-carousal-home">
-            <div className="company-name-carousal">
-              M&P
-            </div>
-            <div className="meta-desc-company-carousal">
-              We make sure to deliver deliberately.
-            </div>
-            <div className="investment-required-carousal">
-              Investment Required: <b>Rs.250000</b>
-            </div>
-            <button className="see-more-carousal">
-              See More Info
-            </button>
+            <button className="see-more-carousal">See More Info</button>
           </div>
         </Carousel>
         <Button>Explore More Companies</Button>

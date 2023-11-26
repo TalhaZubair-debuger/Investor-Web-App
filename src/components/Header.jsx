@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 
 const Header = () => {
   return (
-    <header className="bg-[#ccc]">
+    <header className="bg-black">
       <nav className="flex justify-between px-10">
         <div className="flex px-8 py-3 items-center">
           <Link to="/">
@@ -11,7 +11,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <ul className="flex space-x-8 justify-center p-5 text-[#7134b9] text-lg font-semibold">
+        <ul className="flex space-x-8 justify-center p-5 text-white text-lg font-semibold">
           <Link to="/">Home</Link>
           <Link to="/about">About Us</Link>
           <Link to="/contact">Contact Us</Link>

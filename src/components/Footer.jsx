@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-300  flex justify-around items-center py-10">
+    <footer className="bg-black text-[#b9b9b9]  flex justify-around items-center py-10">
       <div className="flex justify-center flex-col items-center space-y-5">
         <img className="w-40" src={logo} alt="Logo image" />
         <p>All rights reserved by Distribex &copy;</p>

@@ -1,5 +1,3 @@
-import React from "react";
-
 const InvestCheckout = () => {
   return (
     <div className="main-investnow">
