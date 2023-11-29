@@ -10,6 +10,7 @@ import Distributors from "./components/Distributors";
 import DistributorPortfolio from "./components/DistributorPortfolio";
 import InvestCheckout from "./components/InvestCheckout";
 import TermsAndConditions from "./components/TermsAndConditions";
+import DistributorDashboard from "./components/DistributorDashboard";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,16 @@ const router = createBrowserRouter([
       { path: "/signin", element: <Form /> },
       { path: "/terms-and-conditions", element: <TermsAndConditions /> },
       {
+        path: "/get-investment",
+        element: <Form getInvestment="getInvestment" />,
+      },
+      {
         path: "/signin-distributor",
         element: <Form distributor="distributor" />,
+      },
+      {
+        path: "/distributor-dashboard",
+        element: <DistributorDashboard />,
       },
     ],
   },

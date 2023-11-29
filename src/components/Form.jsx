@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import FormItem from "./FormItem";
 
-const Form = ({ signup, distributor }) => {
+const Form = ({ signup, distributor, getInvestment }) => {
   return (
     <section className="bg-gray-50">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -19,6 +19,8 @@ const Form = ({ signup, distributor }) => {
                 ? `Create an account`
                 : distributor
                 ? `Sign in to Distributor`
+                : getInvestment
+                ? `Investment Form`
                 : `Sign in to Investor’s`}
             </h1>
             <form
@@ -28,6 +30,8 @@ const Form = ({ signup, distributor }) => {
                   ? "/signup"
                   : distributor
                   ? "/signin-distributor"
+                  : getInvestment
+                  ? `/get-investment`
                   : "/signin"
               }
               method="post"
@@ -51,10 +55,32 @@ const Form = ({ signup, distributor }) => {
               <FormItem label="email" type="email" placeholder="name@gmail.com">
                 Your email
               </FormItem>
-
-              <FormItem label="password" type="password" placeholder="••••••••">
-                Password
-              </FormItem>
+              {getInvestment ? (
+                <>
+                  <FormItem
+                    label="equity"
+                    type="number"
+                    placeholder="Enter your equity in %"
+                  >
+                    Equity
+                  </FormItem>
+                  <FormItem
+                    label="amount"
+                    type="number"
+                    placeholder="Rs. 10000"
+                  >
+                    Required Amount
+                  </FormItem>
+                </>
+              ) : (
+                <FormItem
+                  label="password"
+                  type="password"
+                  placeholder="••••••••"
+                >
+                  Password
+                </FormItem>
+              )}
 
               {signup ? (
                 <div className="flex items-start">
@@ -79,6 +105,8 @@ const Form = ({ signup, distributor }) => {
                     </label>
                   </div>
                 </div>
+              ) : getInvestment ? (
+                ""
               ) : distributor ? (
                 ""
               ) : (
@@ -111,19 +139,27 @@ const Form = ({ signup, distributor }) => {
                 type="submit"
                 className="w-full text-white bg-black hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                {signup ? "Sign up" : "Sign in"}
+                {signup ? "Sign up" : getInvestment ? "Invest now" : "Sign in"}
               </button>
               <p className="text-sm font-light text-gray-500">
                 {signup
                   ? `Already have an account? `
                   : distributor
                   ? ""
+                  : getInvestment
+                  ? ""
                   : `Don’t have an account yet? `}
                 <Link
                   to={signup ? `/signin` : `/signup`}
                   className="font-medium text-black hover:underline"
                 >
-                  {signup ? `Login here` : distributor ? "" : `Sign up`}
+                  {signup
+                    ? `Login here`
+                    : distributor
+                    ? ""
+                    : getInvestment
+                    ? ""
+                    : `Sign up`}
                 </Link>
               </p>
             </form>
@@ -138,6 +174,7 @@ Form.propTypes = {
   signup: PropTypes.string,
   distributor: PropTypes.string,
   children: PropTypes.string,
+  getInvestment: PropTypes.string,
 };
 
 export default Form;
