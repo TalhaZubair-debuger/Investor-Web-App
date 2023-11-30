@@ -58,17 +58,14 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
-                  <a href="https://flowbite.com/" className="hover:underline">
-                    Flowbite
-                  </a>
+                  <Link to="/invertorDashboard" className="hover:underline">
+                    Investor Dashboard
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://tailwindcss.com/"
-                    className="hover:underline"
-                  >
-                    Tailwind CSS
-                  </a>
+                  <Link to="/sign in" className="hover:underline">
+                    Sign in
+                  </Link>
                 </li>
               </ul>
             </div>

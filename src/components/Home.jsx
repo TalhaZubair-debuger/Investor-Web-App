@@ -7,29 +7,7 @@ import appFeaturesImage from "../assets/Features.png";
 import { Link } from "react-router-dom";
 import TeamMember from "./TeamMember";
 
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
-// import CarouselItem from "./CarouselItem";
-
 const Home = () => {
-  // const responsive = {
-  //   superLargeDesktop: {
-  //     breakpoint: { max: 4000, min: 3000 },
-  //     items: 5,
-  //   },
-  //   desktop: {
-  //     breakpoint: { max: 3000, min: 1024 },
-  //     items: 3,
-  //   },
-  //   tablet: {
-  //     breakpoint: { max: 1024, min: 464 },
-  //     items: 2,
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 464, min: 0 },
-  //     items: 1,
-  //   },
-  // };
   return (
     <div>
       <Banner />
@@ -69,7 +47,7 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center lg:py-2 py-2 lg:pt-20">
+        <div className="flex justify-center lg:py-2 py-2 pt-12 lg:pt-20">
           <Link
             to="/about"
             className="py-3 px-6 lg:tracking-wide text-sm font-medium text-center text-white rounded-lg bg-black sm:w-fit hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300"
@@ -82,7 +60,7 @@ const Home = () => {
       {/* Distributor App Section */}
 
       <section className=" bg-white pt-10">
-        <h3 className="text-6xl font-semibold uppercase text-center">
+        <h3 className="text-3xl sm:text-5xl font-semibold uppercase text-center">
           Distributor App
         </h3>
         <div className="flex py-10">
