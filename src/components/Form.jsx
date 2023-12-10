@@ -11,6 +11,7 @@ const Form = ({ signup, distributor, getInvestment }) => {
   const [password, setPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
 
+  
   const handleSignUpDistributor = async () => {
     if (name === "" || number === null || password === ""){
       alert("Alert!", "Please fill the form completely.");
