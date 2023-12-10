@@ -1,8 +1,39 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import FormItem from "./FormItem";
-
+import { useState } from "react";
+import axios from "axios";
+import HostName from "../utils/HostName";
 const Form = ({ signup, distributor, getInvestment }) => {
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
+
+  const handleSignUpDistributor = async () => {
+    if (name === "" || number === null || password === "") {
+      alert("Alert!", "Please fill the form completely.");
+    } else {
+      const formData = {
+        name,
+        number,
+        password,
+      };
+      const response = await axios.post(
+        `${HostName}/website-user/investor-signup`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    }
+  };
+
   return (
     <section className="bg-gray-50">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -35,16 +66,25 @@ const Form = ({ signup, distributor, getInvestment }) => {
                   : "/signin"
               }
               method="post"
+              onSubmit={signup ? handleSignUpDistributor : null}
             >
               {signup ? (
                 <>
-                  <FormItem label="Name" type="text" placeholder="Your name">
+                  <FormItem
+                    label="Name"
+                    type="text"
+                    placeholder="Your name"
+                    state={name}
+                    UseState={setName}
+                  >
                     Name
                   </FormItem>
                   <FormItem
                     label="number"
                     type="number"
                     placeholder="+92-300-0000000"
+                    state={number}
+                    UseState={setNumber}
                   >
                     Phone number
                   </FormItem>
@@ -61,6 +101,8 @@ const Form = ({ signup, distributor, getInvestment }) => {
                     label="equity"
                     type="number"
                     placeholder="Enter your equity in %"
+                    state={email}
+                    UseState={setEmail}
                   >
                     Equity
                   </FormItem>
@@ -77,6 +119,8 @@ const Form = ({ signup, distributor, getInvestment }) => {
                   label="password"
                   type="password"
                   placeholder="••••••••"
+                  state={password}
+                  UseState={setPassword}
                 >
                   Password
                 </FormItem>
@@ -91,6 +135,8 @@ const Form = ({ signup, distributor, getInvestment }) => {
                       type="checkbox"
                       className="w-4 h-4 accent-black border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300"
                       required
+                      value={checkbox}
+                      onChange={() => setCheckbox(true)}
                     />
                   </div>
                   <div className="ml-3 text-sm">
