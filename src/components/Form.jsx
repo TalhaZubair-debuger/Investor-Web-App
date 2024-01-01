@@ -1,35 +1,42 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import FormItem from "./FormItem";
-import { useState } from "react";
-import axios from "axios";
+import { useRef, useState } from "react";
 import HostName from "../utils/HostName";
+
 const Form = ({ signup, distributor, getInvestment }) => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const name = useRef("");
+  const number = useRef("");
+  const email = useRef("");
+  const password = useRef("");
   const [checkbox, setCheckbox] = useState(false);
 
   const handleSignUpDistributor = async () => {
-    if (name === "" || number === null || password === "") {
-      alert("Alert!", "Please fill the form completely.");
+    if (name === "" || number === null || password === "" || email === "") {
+      alert("Alert! Please fill the form completely.");
     } else {
+      name.current.value = name;
       const formData = {
         name,
         number,
         password,
+        email,
       };
-      const response = await axios.post(
-        `${HostName}/website-user/investor-signup`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
+
+      const res = await fetch(`${HostName}/website-user/investor-signup`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          number,
+          password,
+          email,
+        }),
+      });
+
+      const data = await res.json();
       console.log(data);
     }
   };
@@ -65,8 +72,15 @@ const Form = ({ signup, distributor, getInvestment }) => {
                   ? `/get-investment`
                   : "/signin"
               }
-              method="post"
-              onSubmit={signup ? handleSignUpDistributor : null}
+              method={
+                signup
+                  ? "put"
+                  : distributor
+                  ? "post"
+                  : getInvestment
+                  ? `post`
+                  : "post"
+              }
             >
               {signup ? (
                 <>
@@ -74,17 +88,15 @@ const Form = ({ signup, distributor, getInvestment }) => {
                     label="Name"
                     type="text"
                     placeholder="Your name"
-                    state={name}
-                    UseState={setName}
+                    ref={name}
                   >
                     Name
                   </FormItem>
                   <FormItem
                     label="number"
                     type="number"
+                    ref={number}
                     placeholder="+92-300-0000000"
-                    state={number}
-                    UseState={setNumber}
                   >
                     Phone number
                   </FormItem>
@@ -92,7 +104,12 @@ const Form = ({ signup, distributor, getInvestment }) => {
               ) : (
                 ""
               )}
-              <FormItem label="email" type="email" placeholder="name@gmail.com">
+              <FormItem
+                label="email"
+                ref={email}
+                type="email"
+                placeholder="name@gmail.com"
+              >
                 Your email
               </FormItem>
               {getInvestment ? (
@@ -101,8 +118,6 @@ const Form = ({ signup, distributor, getInvestment }) => {
                     label="equity"
                     type="number"
                     placeholder="Enter your equity in %"
-                    state={email}
-                    UseState={setEmail}
                   >
                     Equity
                   </FormItem>
@@ -119,8 +134,7 @@ const Form = ({ signup, distributor, getInvestment }) => {
                   label="password"
                   type="password"
                   placeholder="••••••••"
-                  state={password}
-                  UseState={setPassword}
+                  ref={password}
                 >
                   Password
                 </FormItem>
@@ -184,6 +198,7 @@ const Form = ({ signup, distributor, getInvestment }) => {
               <button
                 type="submit"
                 className="w-full text-white bg-black hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                onClick={signup ? handleSignUpDistributor : null}
               >
                 {signup ? "Sign up" : getInvestment ? "Invest now" : "Sign in"}
               </button>

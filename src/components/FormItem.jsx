@@ -31,7 +31,7 @@ FormItem.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   state: PropTypes.string,
-  UseState: PropTypes.any
+  UseState: PropTypes.any,
 };
 
 export default FormItem;

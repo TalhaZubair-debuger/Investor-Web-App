@@ -11,6 +11,8 @@ import DistributorPortfolio from "./components/DistributorPortfolio";
 import InvestCheckout from "./components/InvestCheckout";
 import TermsAndConditions from "./components/TermsAndConditions";
 import DistributorDashboard from "./components/DistributorDashboard";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +22,11 @@ const router = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/invertorDashboard", element: <InvestorDashboard /> },
-      { path: "/signup", element: <Form signup="signup" /> },
+      { path: "/signup", element: <Signup /> },
       { path: "/distributors", element: <Distributors /> },
       { path: "/distributor-portfolio", element: <DistributorPortfolio /> },
       { path: "/invest-now", element: <InvestCheckout /> },
-      { path: "/signin", element: <Form /> },
+      { path: "/signin", element: <Signin /> },
       { path: "/terms-and-conditions", element: <TermsAndConditions /> },
       {
         path: "/get-investment",
