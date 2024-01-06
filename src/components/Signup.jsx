@@ -34,6 +34,9 @@ const Signup = () => {
           alert("Sign up Successfully");
           navigate("/signin");
         }
+        else {
+          alert("Error Signing up!");
+        }
         console.log(data);
       } catch (err) {
         console.log(err);

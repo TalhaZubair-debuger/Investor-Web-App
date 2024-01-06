@@ -26,8 +26,8 @@ const Signin = () => {
         });
 
         const data = await res.json();
-        if (data) {
-          alert("Sign in Successfully");
+        if (data.token) {
+          sessionStorage.setItem("jwtToken", `Bearer-Investor ${data.token}`);
           navigate("/invertorDashboard");
         }
         console.log(data);

@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import NavItem from "./NavItem";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
+  const token = sessionStorage.getItem("jwtToken");
+  const [isSignIn, setIsSignIn] = useState(false);
+  useEffect(() => {
+    if (token != null) {
+      setIsSignIn(true);
+    }
+  }, []);
   return (
     <nav className="bg-white border-gray-200">
       <div className="md:text-sm md:space-y-4 lg:space-y-0 lg:text-lg max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -39,13 +47,17 @@ const NavBar = () => {
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
-            <NavItem to="/">Home</NavItem>
             <NavItem to="/about">About Us</NavItem>
             <NavItem to="/contact">Contact Us</NavItem>
-            <NavItem to="/invertorDashboard">Investor Dashboard</NavItem>
             <NavItem to="/distributors">Distributors</NavItem>
-            <NavItem to="/signup">Sign Up</NavItem>
-            <NavItem to="/signin">Sign In</NavItem>
+            {isSignIn === true ? (
+              <NavItem to="/invertorDashboard">Investor Dashboard</NavItem>
+            ) : null}
+            {isSignIn === true ? (
+              <></>
+            ) : (
+              <NavItem to="/signin">Sign In</NavItem>
+            )}
           </ul>
         </div>
       </div>

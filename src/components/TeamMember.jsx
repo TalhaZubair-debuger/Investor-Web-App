@@ -1,3 +1,4 @@
+import OwnerPic from "../assets/owner.jpg";
 const TeamMember = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -11,15 +12,15 @@ const TeamMember = () => {
             Creative Journey.
           </p>
         </div>
-        <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center m-auto align-center">
           <div className="text-center text-gray-500 dark:text-gray-400">
             <img
               className="mx-auto mb-4 w-36 h-36 rounded-full"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-              alt="Bonnie Avatar"
+              src={OwnerPic}
+              alt="Talha Bin Zubair"
             />
             <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <a href="#">Bonnie Green</a>
+              <a href="#">Talha Bin Zubair</a>
             </h3>
             <p>CEO/Co-founder</p>
           </div>
@@ -30,9 +31,9 @@ const TeamMember = () => {
               alt="Bonnie Avatar"
             />
             <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <a href="#">Bonnie Green</a>
+              <a href="#">Bilal Tayyab</a>
             </h3>
-            <p>CEO/Co-founder</p>
+            <p>COO/Co-founder</p>
           </div>
           <div className="text-center text-gray-500 dark:text-gray-400">
             <img
@@ -41,20 +42,9 @@ const TeamMember = () => {
               alt="Bonnie Avatar"
             />
             <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <a href="#">Bonnie Green</a>
+              <a href="#">Hasnain Ayoub</a>
             </h3>
-            <p>CEO/Co-founder</p>
-          </div>
-          <div className="text-center text-gray-500 dark:text-gray-400">
-            <img
-              className="mx-auto mb-4 w-36 h-36 rounded-full"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-              alt="Bonnie Avatar"
-            />
-            <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <a href="#">Bonnie Green</a>
-            </h3>
-            <p>CEO/Co-founder</p>
+            <p>CMO/Co-founder</p>
           </div>
         </div>
       </div>
