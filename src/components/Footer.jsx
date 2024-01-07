@@ -4,42 +4,6 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    // <footer className="bg-black text-[#b9b9b9]  flex justify-around items-center py-10">
-    //   <div className="flex justify-center flex-col items-center space-y-5">
-    //     <img className="w-40" src={logo} alt="Logo image" />
-    //     <p>All rights reserved by Distribex &copy;</p>
-    //   </div>
-    //   <div>
-    //     <ul>
-    //       <li className="font-semibold text-2xl pb-5">Quick Access</li>
-    //       <li>About Us</li>
-    //       <li>Investor Dashboard</li>
-    //     </ul>
-    //   </div>
-    //   <div>
-    //     <ul>
-    //       <li className="font-semibold text-2xl pb-5">More Links</li>
-    //       <li>Contact Us</li>
-    //     </ul>
-    //   </div>
-    //   <div className="flex flex-col">
-    //     <label className="pb-3 font-semibold text-xl" htmlFor="message">
-    //       Message Us
-    //     </label>
-    //     <textarea
-    //       name="message"
-    //       id="message"
-    //       cols="30"
-    //       rows="5"
-    //       placeholder="Write Message... "
-    //     ></textarea>
-    //     <br />
-    //     <Button>Submit</Button>
-    //   </div>
-    // </footer>
-
-    ////////////////////////////////////////////////
-
     <footer className="bg-black">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
@@ -60,6 +24,11 @@ const Footer = () => {
                 <li className="mb-4">
                   <Link to="/invertorDashboard" className="hover:underline">
                     Investor Dashboard
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link to="/signin-distributor" className="hover:underline">
+                    Distributor Sign in
                   </Link>
                 </li>
                 <li>

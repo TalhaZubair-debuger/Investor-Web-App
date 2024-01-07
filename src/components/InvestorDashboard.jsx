@@ -4,10 +4,10 @@ import PieChart from "./PieChart";
 const InvestorDashboard = () => {
   return (
     <>
-      <div className="antialiased bg-gray-50 dark:bg-gray-900">
+      <div className="antialiased bg-gray-50">
         <main className="p-4 h-auto pt-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-            <div className="border-2 border-solid border-gray-300 shadow-md	bg-white rounded-lg dark:border-gray-600 h-32 md:h-64">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+            <div className="border-2 border-solid border-gray-300 shadow-md	bg-white rounded-lg h-32 md:h-64">
               <h4 className="content-center text-center mb-4 text-xl font-semibold ">
                 Your Total Earnings
               </h4>
@@ -24,7 +24,7 @@ const InvestorDashboard = () => {
                 <b>Predicted Revenue:</b> Rs. 8,500
               </div>
             </div>
-            <div className="border-2 border-solid border-gray-300 shadow-md	 rounded-lg dark:border-gray-600 h-32 md:h-64 bg-white">
+            <div className="border-2 border-solid border-gray-300 shadow-md	 rounded-lg h-32 md:h-64 bg-white">
               <h4 className="content-center text-center mb-4 text-xl font-semibold">
                 Companies You Invested In
               </h4>
@@ -38,7 +38,7 @@ const InvestorDashboard = () => {
                 MnP logistics
               </div>
             </div>
-            <div className="border-2 border-solid border-gray-300 shadow-md	 rounded-lg dark:border-gray-600 h-32 md:h-64 scroll-auto bg-white">
+            <div className="border-2 border-solid border-gray-300 shadow-md	 rounded-lg  h-32 md:h-64 scroll-auto bg-white">
               <h4 className="content-center text-center mb-4 text-xl font-semibold">
                 Request Your Profit from Distributors
               </h4>
@@ -56,11 +56,12 @@ const InvestorDashboard = () => {
               </div>
             </div>
           </div>
+
           <div className="content-center text-center text-xl font-semibold	 p-3">
             Details of companies you invested in
           </div>
           <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 dark:border-gray-600 bg-white">
+            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 bg-white">
               <div className="flex-grid-row">
                 <img src={mnp} alt="company logo" className="w-32" />
                 <div className="text-lg font-semibold p-2">
@@ -74,12 +75,12 @@ const InvestorDashboard = () => {
                     25,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
-                    <div className="font-semibold">Last Month's Profit:</div>{" "}
+                    <div className="font-semibold">Last Month’s Profit:</div>{" "}
                     Rs. 5,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
                     <div className="font-semibold">
-                      Your Last Month's divident:
+                      Your Last Month’s divident:
                     </div>{" "}
                     Rs. 2,000
                   </div>
@@ -91,7 +92,7 @@ const InvestorDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 dark:border-gray-600 bg-white">
+            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 bg-white">
               <div className="flex-grid-row">
                 <img src={mnp} alt="company logo" className="w-32" />
                 <div className="text-lg font-semibold p-2">
@@ -105,12 +106,12 @@ const InvestorDashboard = () => {
                     25,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
-                    <div className="font-semibold">Last Month's Profit:</div>{" "}
+                    <div className="font-semibold">Last Month’s Profit:</div>{" "}
                     Rs. 5,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
                     <div className="font-semibold">
-                      Your Last Month's divident:
+                      Your Last Month’s divident:
                     </div>{" "}
                     Rs. 2,000
                   </div>
@@ -122,7 +123,7 @@ const InvestorDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 dark:border-gray-600 bg-white">
+            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 bg-white">
               <div className="flex-grid-row">
                 <img src={mnp} alt="company logo" className="w-32" />
                 <div className="text-lg font-semibold p-2">
@@ -136,12 +137,12 @@ const InvestorDashboard = () => {
                     25,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
-                    <div className="font-semibold">Last Month's Profit:</div>{" "}
+                    <div className="font-semibold">Last Month’s Profit:</div>{" "}
                     Rs. 5,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
                     <div className="font-semibold">
-                      Your Last Month's divident:
+                      Your Last Month’s divident:
                     </div>{" "}
                     Rs. 2,000
                   </div>
@@ -153,7 +154,7 @@ const InvestorDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 dark:border-gray-600 bg-white">
+            <div className="border-2 border-solid rounded-lg shadow-md border-gray-300 bg-white">
               <div className="flex-grid-row">
                 <img src={mnp} alt="company logo" className="w-32" />
                 <div className="text-lg font-semibold p-2">
@@ -167,12 +168,12 @@ const InvestorDashboard = () => {
                     25,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
-                    <div className="font-semibold">Last Month's Profit:</div>{" "}
+                    <div className="font-semibold">Last Month’s Profit:</div>{" "}
                     Rs. 5,000
                   </div>
                   <div className="flex-grid-row-non-center p-2">
                     <div className="font-semibold">
-                      Your Last Month's divident:
+                      Your Last Month’s divident:
                     </div>{" "}
                     Rs. 2,000
                   </div>
