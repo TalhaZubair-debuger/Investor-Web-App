@@ -14,7 +14,7 @@ const DistributorSignIn = () => {
       alert("Alert! Please fill the form completely.");
     } else {
       try {
-        const res = await fetch(`${hostname}/website-user/investor-login`, {
+        const res = await fetch(`${hostname}/user/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -27,9 +27,10 @@ const DistributorSignIn = () => {
 
         const data = await res.json();
         if (data.token) {
+          console.log("Line 30 -> "+data);
           sessionStorage.setItem(
             "jwtToken",
-            `Bearer-Distributor ${data.token}`
+            `Bearer ${data.token}`
           );
           navigate("/distributor-dashboard");
         }

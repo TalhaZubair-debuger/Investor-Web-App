@@ -1,8 +1,39 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DistributorDashboardItem from "./DistributorDashboardItem";
 import InvestorMailAlert from "./InvestorMailAlert";
+import hostname from "../utils/HostName";
+import { useEffect, useState } from "react";
 
 const DistributorDashboard = () => {
+  const [user, setUser] = useState();
+  const navigate = useNavigate();
+  useEffect(() => {
+    getUser();
+  }, []);
+  const getUser = async () => {
+    try {
+      const jwtToken = sessionStorage.getItem("jwtToken");
+      const response = await fetch(`${hostname}/user/get-user`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${jwtToken}`,
+        },
+        method: "GET",
+      });
+      const Data = await response.json();
+      if (Data.user) {
+        setUser(Data.user);
+        console.log(Data);
+      }
+      console.log(Data);
+    } catch (error) {
+      alert("Alert! Error fething user details");
+    }
+  };
+
+  const handleNavigateToGetInvestment = () => {
+    navigate("/get-investment", { state: { userId: user._id } });
+  };
   return (
     <section className="bg-white">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -11,27 +42,40 @@ const DistributorDashboard = () => {
             Distributor Dashboard
           </h2>
         </div>
+        <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+          <p className=" tracking-tight text-gray-900">
+            Hi {user ? user.name : "there"}!
+          </p>
+        </div>
         <div className="grid gap-8 lg:grid-cols-2">
-          <section className="p-6 bg-white rounded-lg border border-gray-200 shadow-md">
-            <div className="flex justify-between items-center mb-5 text-gray-500"></div>
-            <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              Need Investment?
-            </h2>
-            <p className="mb-5 font-light text-gray-500 dark:text-gray-400">
-              You can fill in your needs for investment and the investor will
-              approach you themselves.
-            </p>
-            <div className="flex justify-between items-center">
-              <div className="flex items-center space-x-4">
-                <Link
-                  to="/get-investment"
-                  className="py-3 px-6 lg:tracking-wide text-sm font-medium text-center text-white rounded-lg bg-black sm:w-fit hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300"
-                >
-                  Get Investment
-                </Link>
-              </div>
-            </div>
-          </section>
+          {user ? (
+            !user.investorEmail ? (
+              <section className="p-6 bg-white rounded-lg border border-gray-200 shadow-md">
+                <div className="flex justify-between items-center mb-5 text-gray-500"></div>
+                <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                  Need Investment?
+                </h2>
+                <p className="mb-5 font-light text-gray-500 dark:text-gray-400">
+                  You can fill in your needs for investment and the investor
+                  will approach you themselves.
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center space-x-4">
+                    <div
+                      onClick={handleNavigateToGetInvestment}
+                      className="py-3 px-6 lg:tracking-wide text-sm font-medium text-center text-white rounded-lg bg-black sm:w-fit hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300"
+                    >
+                      Get Investment
+                    </div>
+                  </div>
+                </div>
+              </section>
+            ) : (
+              <></>
+            )
+          ) : (
+            <></>
+          )}
 
           {/* Section 2 */}
 
@@ -43,9 +87,9 @@ const DistributorDashboard = () => {
             <DistributorDashboardItem
               rs="rs"
               title="Current Revenue :"
-              price="100000"
+              price={user.totalRevenue}
             />
-            <DistributorDashboardItem rs="rs" title="Profit :" price="99000" />
+            {/* <DistributorDashboardItem title="No. of Shops :" price="99000" /> <------------- */}
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-4">
                 <p className="font-extrabold lg:text-lg ">

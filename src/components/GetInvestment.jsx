@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import hostname from "../utils/HostName";
 
 const GetInvestment = () => {
@@ -8,6 +8,11 @@ const GetInvestment = () => {
   const [amount, setAmount] = useState("");
   // const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const { userId } = location.state || {};
+  useEffect(() => {
+    console.log(userId);
+  }, []);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -15,15 +20,15 @@ const GetInvestment = () => {
       alert("Alert! Please fill the form completely.");
     } else {
       try {
-        const jwtToken = await sessionStorage.getItem("jwtToken");
-        const res = await fetch(`${hostname}/users/get-investment/:userId`, {
+        const jwtToken = sessionStorage.getItem("jwtToken");
+        const res = await fetch(`${hostname}/user/get-investment`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer-Distributor ${jwtToken}`,
+            "Authorization": `${jwtToken}`,
           },
           body: JSON.stringify({
-            email,
+            investorEmail: email,
             equity,
             amount,
           }),
@@ -31,7 +36,7 @@ const GetInvestment = () => {
 
         const data = await res.json();
         if (data.message) {
-          alert("Sign up Successfully");
+          alert("Investment Information Added!");
           navigate("/distributor-dashboard");
         } else {
           alert("Error Signing up!");
