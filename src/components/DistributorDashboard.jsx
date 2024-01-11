@@ -87,7 +87,9 @@ const DistributorDashboard = () => {
             <DistributorDashboardItem
               rs="rs"
               title="Current Revenue :"
-              price={user.totalRevenue}
+              price={
+                user ? (user.totalRevenue ? user.totalRevenue : "null") : "null"
+              }
             />
             {/* <DistributorDashboardItem title="No. of Shops :" price="99000" /> <------------- */}
             <div className="flex justify-between items-center">
@@ -106,14 +108,56 @@ const DistributorDashboard = () => {
             <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
               Shares
             </h2>
-            <DistributorDashboardItem title="Your Share :" price="70" />
-            <DistributorDashboardItem title="Investor Share :" price="30" />
+            {user ? (
+              user.gotInvestment === true ? (
+                <>
+                  <DistributorDashboardItem
+                    title="Your Share :"
+                    price="70"
+                    rs={"Rs."}
+                  />
+                  <DistributorDashboardItem
+                    title="Investor Share :"
+                    price="30"
+                    rs={"Rs."}
+                  />
+                </>
+              ) : (
+                <>
+                  <DistributorDashboardItem
+                    title="Your Share :"
+                    price="none"
+                    rs={"Rs."}
+                  />
+                  <DistributorDashboardItem
+                    title="Investor Share :"
+                    price="none"
+                    rs={"Rs."}
+                  />
+                </>
+              )
+            ) : (
+              <></>
+            )}
+
             <DistributorDashboardItem
               rs="rs"
-              title="Total Profit :"
-              price="99000"
+              title="Total Revenue :"
+              price={
+                user ? (user.totalRevenue ? user.totalRevenue : "none") : "none"
+              }
             />
-            <DistributorDashboardItem rs="rs" title="You Got :" price="69000" />
+            <DistributorDashboardItem
+              rs="rs"
+              title="You Got :"
+              price={
+                user
+                  ? user.currentHoldings
+                    ? user.currentHoldings
+                    : "none"
+                  : "none"
+              }
+            />
           </section>
 
           {/* Section 4 */}
