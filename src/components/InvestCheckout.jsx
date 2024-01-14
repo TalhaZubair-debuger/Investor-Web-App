@@ -1,4 +1,43 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import {loadStripe} from '@stripe/stripe-js';
+import hostname from "../utils/HostName";
+
 const InvestCheckout = () => {
+  const location = useLocation();
+  const { user } = location.state || {};
+const navigate = useNavigate();
+
+  const handleInvestmentPayment = async () => {
+    // const stripe = await loadStripe(user.stripePublishableKey);
+    const formBody = {
+      amount: user.amount,
+      distributorName: user.name,
+      companyName: user.companyName
+    }
+
+    try {
+      const jwtToken = await sessionStorage.getItem("jwtToken");
+      const response = await fetch(`${hostname}/user/handle-investor-payment/${user._id}`, 
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `${jwtToken}`
+        },
+        method: "POST",
+        body: JSON.stringify(formBody)
+      })
+      const session = await response.json();
+      if (session){
+        alert("Investment Successful!");
+        navigate("/invertorDashboard");
+      }
+      // const result = stripe.redirectToCheckout({
+      //   sessionId: session.id
+      // })
+    } catch (error) {
+      alert("Couldn't process payment!");
+    }
+  }
   return (
     <div className="main-investnow">
       <h1 className="mb-4 text-4xl py-5 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl">
@@ -20,11 +59,11 @@ const InvestCheckout = () => {
       </span>
 
       <span className="bg-red-300 mb-4 text-red-800 text-lg font-medium me-2 px-6 py-2 rounded">
-        P&G distributors are willing to share <b>20%</b> equity of thier company
-        for investment of Rs.1000000.
+        {user.companyName} distributors are willing to share <b>{user.equity}%</b> equity of thier company
+        for investment of Rs. {user.amount}.
       </span>
 
-      <button className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-black sm:w-fit hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300 mb-[10vh]">
+      <button onClick={handleInvestmentPayment} className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-black sm:w-fit hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300 mb-[10vh]">
         Proceed To Invest
       </button>
     </div>

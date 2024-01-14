@@ -8,36 +8,17 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const DistributorPortfolio = () => {
   const navigate = useNavigate();
-  const products = [
-    {
-      productName: "Redragon K-503 Harpe",
-      unitSold: 4600,
-      revenueGenerated: 5200 * 4600,
-      revenueExpected: 5300 * 4600,
-    },
-    {
-      productName: "Logitech G501",
-      unitSold: 2000,
-      revenueGenerated: 4000 * 2000,
-      revenueExpected: 4100 * 2000,
-    },
-    {
-      productName: "Redragon K-503 Harpe",
-      unitSold: 4600,
-      revenueGenerated: 5200 * 4600,
-      revenueExpected: 5300 * 4600,
-    },
-    {
-      productName: "Redragon K-503 Harpe",
-      unitSold: 4600,
-      revenueGenerated: 5200 * 4600,
-      revenueExpected: 5300 * 4600,
-    },
-  ];
+  const location = useLocation();
+  const { user, products } = location.state || {};
+  useEffect(() => {
+    console.log(user);
+    console.log(products);
+  }, []);
 
   const data = [
     {
@@ -85,7 +66,7 @@ const DistributorPortfolio = () => {
   ];
 
   const handleInvestNow = () => {
-    navigate("/invest-now");
+    navigate("/invest-now", { state: { user: user} });
   };
   return (
     <>
@@ -93,27 +74,22 @@ const DistributorPortfolio = () => {
       <main className="distributor-portfolio-main">
         <div className="top-section">
           <div className="left">
-            <img src={mnp} alt="company logo" className="left" />
+            <img src={user.image} alt="company logo" className="left" />
           </div>
 
           <div className="right">
-            <div className="distributor-name">M&P</div>
-            <div className="meta-description">
-              We make sure to deliver deliberately. We make sure to deliver
-              deliberately. We make sure to deliver deliberately. We make sure
-              to deliver deliberately. We make sure to deliver deliberately. We
-              make sure to deliver deliberately.
-            </div>
+            <div className="distributor-name">{user.companyName}</div>
+            <div className="meta-description">{user.tagline}</div>
 
             <div className="sales">
               <div className="previous-sales">
-                Previous Quarter Sales
-                <div className="sales-badge">Rs.23456789</div>
+                Previous Month Sales
+                <div className="sales-badge">Rs.NaN</div>
               </div>
 
               <div className="current-holdings">
                 Current Holdings
-                <div className="sales-badge">Rs.123456</div>
+                <div className="sales-badge">Rs.NaN</div>
               </div>
             </div>
           </div>
@@ -123,33 +99,33 @@ const DistributorPortfolio = () => {
           <div className="heading">Products</div>
 
           <div className="list">
-            {products.map((product) => (
-              <>
-                <div className="product-item">
-                  <div className="product-name">
-                    <b>Product Name:</b> {product.productName}
-                  </div>
-                  <div className="unites-sold">
-                    <b>Units sold:</b> {product.unitSold}
-                  </div>
-                  <div className="row">
-                    <div className="revenue-generated">
-                      <div className="text">Revenue Generated</div>
-                      <div className="sales-badge">
-                        Rs.{product.revenueGenerated}
-                      </div>
+            {products ? (
+              products.map((item, index) => (
+                <>
+                  <div className="product-item" key={index}>
+                    <div className="product-name">
+                      <b>Product Name:</b> {item.productName}
                     </div>
+                    <div className="unites-sold">
+                      <b>Units in stock:</b> {item.stockQuantity}
+                    </div>
+                    <div className="row">
+                      <div className="revenue-generated">
+                        <div className="text">Revenue Generated</div>
+                        <div className="sales-badge">Rs.NaN</div>
+                      </div>
 
-                    <div className="revenue-generated">
-                      <div className="text">Revenue Expected</div>
-                      <div className="sales-badge">
-                        Rs.{product.revenueExpected}
+                      <div className="revenue-generated">
+                        <div className="text">Revenue Expected</div>
+                        <div className="sales-badge">Rs.NaN</div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 
@@ -183,7 +159,10 @@ const DistributorPortfolio = () => {
 
         <div className="invest-section-portfolio">
           <div className="investment-required">
-            Investment Required: Rs.1000000
+            Investment Required: Rs. {user.amount}
+          </div>
+          <div className="investment-required">
+            Equity Offering: {user.equity}%
           </div>
           <button onClick={handleInvestNow} className="invest-now">
             Invest Now

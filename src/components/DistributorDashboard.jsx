@@ -23,9 +23,7 @@ const DistributorDashboard = () => {
       const Data = await response.json();
       if (Data.user) {
         setUser(Data.user);
-        console.log(Data);
       }
-      console.log(Data);
     } catch (error) {
       alert("Alert! Error fething user details");
     }
@@ -95,7 +93,7 @@ const DistributorDashboard = () => {
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-4">
                 <p className="font-extrabold lg:text-lg ">
-                  Sales increment over last quater <span>8%</span>
+                  Sales increment over last month <span>8%</span>
                 </p>
               </div>
             </div>
@@ -123,18 +121,7 @@ const DistributorDashboard = () => {
                   />
                 </>
               ) : (
-                <>
-                  <DistributorDashboardItem
-                    title="Your Share :"
-                    price="none"
-                    rs={"Rs."}
-                  />
-                  <DistributorDashboardItem
-                    title="Investor Share :"
-                    price="none"
-                    rs={"Rs."}
-                  />
-                </>
+                <></>
               )
             ) : (
               <></>

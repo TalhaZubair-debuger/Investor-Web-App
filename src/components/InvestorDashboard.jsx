@@ -1,11 +1,40 @@
+import { useEffect, useState } from "react";
 import mnp from "../assets/m&p.png";
+import hostname from "../utils/HostName";
 import PieChart from "./PieChart";
 
 const InvestorDashboard = () => {
+  const [investorData, setInvestorData] = useState();
+
+  useEffect(() => {
+    getInvestorData();
+  }, []);
+
+  const getInvestorData = async () => {
+    try {
+      const jwtToken = sessionStorage.getItem("jwtToken");
+      const response = await fetch(`${hostname}/website-user/get-investor`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${jwtToken}`,
+        },
+        method: "GET",
+      });
+      const Data = await response.json();
+      if (Data.user) {
+        console.log(Data.user);
+        setInvestorData(Data.user);
+      }
+    } catch (error) {
+      alert("Alert! Error fething distributor details");
+    }
+  };
+
   return (
     <>
       <div className="antialiased bg-gray-50">
         <main className="p-4 h-auto pt-20">
+          <div>Hi User!</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             <div className="border-2 border-solid border-gray-300 shadow-md	bg-white rounded-lg h-32 md:h-64">
               <h4 className="content-center text-center mb-4 text-xl font-semibold ">

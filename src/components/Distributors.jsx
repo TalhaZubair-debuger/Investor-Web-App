@@ -1,6 +1,33 @@
+import { useEffect, useState } from "react";
+import hostname from "../utils/HostName";
 import DistributorsList from "./DistributorsList";
 
 const Distributors = () => {
+  const [distributorData, setDistributorData] = useState();
+  useEffect(() => {
+    getDistributorData();
+  }, []);
+  const getDistributorData = async () => {
+    try {
+      const response = await fetch(
+        `${hostname}/user/get-distributors-need-investment`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const Data = await response.json();
+      if (Data.distributorsWithProducts) {
+        console.log(Data.distributorsWithProducts);
+        setDistributorData(Data.distributorsWithProducts);
+      }
+    } catch (error) {
+      alert("Alert! Error fething distributor details");
+    }
+  };
+
   return (
     <section>
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
@@ -13,9 +40,17 @@ const Distributors = () => {
         </p>
 
         <div className="space-y-10">
-          <DistributorsList />
-          <DistributorsList />
-          <DistributorsList />
+          {distributorData ? (
+            distributorData.map((item, index) => (
+              <DistributorsList
+                key={index}
+                user={item.user}
+                products={item.products}
+              />
+            ))
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </section>

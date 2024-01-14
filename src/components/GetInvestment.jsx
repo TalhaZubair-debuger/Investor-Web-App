@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import hostname from "../utils/HostName";
+import { convertImageToBase64 } from "../utils/imageConversion";
 
 const GetInvestment = () => {
   const [email, setEmail] = useState("");
   const [equity, setEquity] = useState("");
   const [amount, setAmount] = useState("");
+  const [tagline, setTagline] = useState("");
+  const [image, setImage] = useState(null);
+  const [stripePublishableKey, setStripePublishableKey] = useState("");
+  const [stripePrivateKey, setStripePrivateKey] = useState("");
+  const [companyName, setCompanyName] = useState("");
   // const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,21 +22,32 @@ const GetInvestment = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    if (amount === null || equity === "" || email === "") {
+    if (
+      amount === null ||
+      equity === "" ||
+      email === "" ||
+      tagline === "" ||
+      image === null ||
+      companyName === ""
+    ) {
       alert("Alert! Please fill the form completely.");
     } else {
       try {
+        const base64Image = await convertImageToBase64(image);
         const jwtToken = sessionStorage.getItem("jwtToken");
         const res = await fetch(`${hostname}/user/get-investment`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `${jwtToken}`,
+            Authorization: `${jwtToken}`,
           },
           body: JSON.stringify({
             investorEmail: email,
             equity,
             amount,
+            tagline,
+            image: base64Image,
+            companyName,
           }),
         });
 
@@ -89,6 +106,68 @@ const GetInvestment = () => {
 
               <div>
                 <label
+                  htmlFor="tagline"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  name="company-name"
+                  id="company-name"
+                  value={companyName}
+                  onChange={(e) => {
+                    setCompanyName(e.target.value);
+                  }}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-stone-600 focus:border-stone-600 block w-full p-2.5"
+                  placeholder="Company Name"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="tagline"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Your Tagline
+                </label>
+                <input
+                  type="text"
+                  name="tagline"
+                  id="tagline"
+                  value={tagline}
+                  onChange={(e) => {
+                    setTagline(e.target.value);
+                  }}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-stone-600 focus:border-stone-600 block w-full p-2.5"
+                  placeholder="description..."
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="tagline"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Your Logo
+                </label>
+                <input
+                  type="file"
+                  name="image"
+                  id="image"
+                  accept=".png, .jpg, .jpeg"
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                  }}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-stone-600 focus:border-stone-600 block w-full p-2.5"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
                   htmlFor="equity"
                   className="block mb-2 text-sm font-medium text-gray-900"
                 >
@@ -129,6 +208,45 @@ const GetInvestment = () => {
                 />
               </div>
 
+              <div>
+                <label
+                  htmlFor="stripePublishableKey"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Stripe Publishable Key
+                </label>
+                <input
+                  type="text"
+                  name="stripePublishableKey"
+                  id="stripePublishableKey"
+                  value={stripePublishableKey}
+                  onChange={(e) => {
+                    setStripePublishableKey(e.target.value);
+                  }}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-stone-600 focus:border-stone-600 block w-full p-2.5"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="stripePublishableKey"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Stripe Private Key
+                </label>
+                <input
+                  type="text"
+                  name="stripePrivateKey"
+                  id="stripePrivateKey"
+                  value={stripePrivateKey}
+                  onChange={(e) => {
+                    setStripePrivateKey(e.target.value);
+                  }}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-stone-600 focus:border-stone-600 block w-full p-2.5"
+                  required
+                />
+              </div>
               <button
                 type="submit"
                 className="w-full text-white bg-black hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
