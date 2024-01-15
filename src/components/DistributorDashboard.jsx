@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 
 const DistributorDashboard = () => {
   const [user, setUser] = useState();
+  const [investors, setInvestors] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     getUser();
+    getPaymentRequests();
   }, []);
   const getUser = async () => {
     try {
@@ -26,6 +28,26 @@ const DistributorDashboard = () => {
       }
     } catch (error) {
       alert("Alert! Error fething user details");
+    }
+  };
+
+  const getPaymentRequests = async () => {
+    try {
+      const jwtToken = sessionStorage.getItem("jwtToken");
+      const response = await fetch(`${hostname}/website-user/get-payment-requests`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${jwtToken}`,
+        },
+        method: "GET",
+      });
+      const Data = await response.json();
+      if (Data.investors) {
+        console.log(Data);
+        setInvestors(Data.investors);
+      }
+    } catch (error) {
+      alert("Alert! Error fething payment requests");
     }
   };
 
@@ -154,8 +176,13 @@ const DistributorDashboard = () => {
             <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
               Investor Mail Alert
             </h2>
-            <InvestorMailAlert>1</InvestorMailAlert>
-            <InvestorMailAlert>2</InvestorMailAlert>
+            {user ? (
+              user.paymentRequests.map((item, index) => (
+                <InvestorMailAlert key={index}>{item.userId}</InvestorMailAlert>
+              ))
+            ) : (
+              <></>
+            )}
           </section>
         </div>
       </div>
