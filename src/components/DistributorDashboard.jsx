@@ -34,13 +34,16 @@ const DistributorDashboard = () => {
   const getPaymentRequests = async () => {
     try {
       const jwtToken = sessionStorage.getItem("jwtToken");
-      const response = await fetch(`${hostname}/website-user/get-payment-requests`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${jwtToken}`,
-        },
-        method: "GET",
-      });
+      const response = await fetch(
+        `${hostname}/website-user/get-payment-requests`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${jwtToken}`,
+          },
+          method: "GET",
+        }
+      );
       const Data = await response.json();
       if (Data.investors) {
         console.log(Data);
@@ -63,7 +66,7 @@ const DistributorDashboard = () => {
           </h2>
         </div>
         <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-          <p className=" tracking-tight text-gray-900">
+          <p className="text-lg font-extrabold tracking-tight text-gray-900">
             Hi {user ? user.name : "there"}!
           </p>
         </div>

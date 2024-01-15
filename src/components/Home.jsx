@@ -82,18 +82,17 @@ const Home = () => {
         </div>
         {/* //////////////////////////// */}
 
-        <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
+        <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+          <h5 className="mb-2 text-3xl font-bold text-gray-900">
             Work fast from anywhere
           </h5>
-          <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
-            Stay up to date and move work forward with Flowbite on iOS &
-            Android. Download the app today.
+          <p className="mb-5 text-base text-gray-500 sm:text-lg">
+            Stay up to date and boost your work with this download the app now.
           </p>
           <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
             <a
               href="#"
-              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5"
             >
               <svg
                 className="me-3 w-7 h-7"
@@ -119,7 +118,7 @@ const Home = () => {
             </a>
             <a
               href="#"
-              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5"
             >
               <svg
                 className="me-3 w-7 h-7"
@@ -270,7 +269,7 @@ const Home = () => {
             className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
             data-carousel-prev
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
               <svg
                 className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
                 aria-hidden="true"
