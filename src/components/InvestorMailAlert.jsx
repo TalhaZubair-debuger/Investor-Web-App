@@ -18,10 +18,7 @@ const InvestorMailAlert = ({ children }) => {
           <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
         </svg>
         <span className="sr-only">Notifications</span>
-        Investor {children} Mail
-        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-stone-300 border-2 border-white rounded-full -top-2 -end-2">
-          8
-        </div>
+        Investor {children} Repayment Request
       </button>
     </div>
   );
