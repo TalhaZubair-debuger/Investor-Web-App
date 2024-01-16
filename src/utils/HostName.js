@@ -1,3 +1,3 @@
-const hostname = "http://localhost:8080";
+const hostname = "https://sids-ytp3.onrender.com";
 
 export default hostname;
