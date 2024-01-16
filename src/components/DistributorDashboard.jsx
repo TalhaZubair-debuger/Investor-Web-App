@@ -25,6 +25,7 @@ const DistributorDashboard = () => {
       const Data = await response.json();
       if (Data.user) {
         setUser(Data.user);
+        console.log(Data.user);
       }
     } catch (error) {
       alert("Alert! Error fething user details");
@@ -46,7 +47,6 @@ const DistributorDashboard = () => {
       );
       const Data = await response.json();
       if (Data.investors) {
-        console.log(Data);
         setInvestors(Data.investors);
       }
     } catch (error) {
@@ -166,7 +166,7 @@ const DistributorDashboard = () => {
                 user
                   ? user.currentHoldings
                     ? user.currentHoldings
-                    : "none"
+                    : user.totalRevenue
                   : "none"
               }
             />

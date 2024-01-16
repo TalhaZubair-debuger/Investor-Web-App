@@ -9,15 +9,26 @@ import {
   Legend,
 } from "recharts";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const DistributorPortfolio = () => {
+  const [revenue, setRevenue] = useState(0);
+  const [predictedRevenue, setPredictedRevenue] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, products } = location.state || {};
   useEffect(() => {
     console.log(user);
     console.log(products);
+
+    let userTotalRevenue = 0;
+    let userPrediction = 0;
+    products.map(product => {
+      userTotalRevenue = userTotalRevenue + product.totalRevenue;
+      userPrediction = userPrediction + product.predictedRevenue;
+      setRevenue(userTotalRevenue);
+      setPredictedRevenue(userPrediction);
+    })
   }, []);
 
   const data = [
@@ -38,31 +49,7 @@ const DistributorPortfolio = () => {
       RedragonK503: 2000,
       LogitechG501: 9800,
       amt: 2290,
-    },
-    {
-      month: "April",
-      RedragonK503: 2780,
-      LogitechG501: 3908,
-      amt: 2000,
-    },
-    {
-      month: "May",
-      RedragonK503: 1890,
-      LogitechG501: 4800,
-      amt: 2181,
-    },
-    {
-      month: "June",
-      RedragonK503: 2390,
-      LogitechG501: 3800,
-      amt: 2500,
-    },
-    {
-      name: "July",
-      RedragonK503: 3490,
-      LogitechG501: 4300,
-      amt: 2100,
-    },
+    }
   ];
 
   const handleInvestNow = () => {
@@ -84,12 +71,12 @@ const DistributorPortfolio = () => {
             <div className="sales">
               <div className="previous-sales">
                 Previous Month Sales
-                <div className="sales-badge">Rs.NaN</div>
+                <div className="sales-badge">Rs. {revenue ? revenue : 0}</div>
               </div>
 
               <div className="current-holdings">
-                Current Holdings
-                <div className="sales-badge">Rs.NaN</div>
+                Predicted Revenue
+                <div className="sales-badge">Rs. {predictedRevenue ? parseInt(predictedRevenue) : 0}</div>
               </div>
             </div>
           </div>
@@ -112,12 +99,12 @@ const DistributorPortfolio = () => {
                     <div className="row">
                       <div className="revenue-generated">
                         <div className="text">Revenue Generated</div>
-                        <div className="sales-badge">Rs.NaN</div>
+                        <div className="sales-badge">Rs. {item.totalRevenue}</div>
                       </div>
 
                       <div className="revenue-generated">
                         <div className="text">Revenue Expected</div>
-                        <div className="sales-badge">Rs.NaN</div>
+                        <div className="sales-badge">Rs. {parseInt(item.predictedRevenue)}</div>
                       </div>
                     </div>
                   </div>

@@ -1,43 +1,105 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import {loadStripe} from '@stripe/stripe-js';
 import hostname from "../utils/HostName";
+import { useEffect } from "react";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const InvestCheckout = () => {
   const location = useLocation();
   const { user } = location.state || {};
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const handleInvestmentPayment = async () => {
-    // const stripe = await loadStripe(user.stripePublishableKey);
-    const formBody = {
-      amount: user.amount,
-      distributorName: user.name,
-      companyName: user.companyName
+  const stripe = useStripe();
+  const elements = useElements();
+
+  useEffect(() => {
+    console.log(user);
+  });
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!stripe || !elements) {
+      alert("Connection error for Stripe!");
+      return;
     }
 
     try {
+      const clientSecret = await createPaymentIntent();
+
+      // Confirm the payment with the card element
+      const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      });
+
+      if (error) {
+        console.error(error);
+      } else {
+        // Payment succeeded
+        handleInvestmentPayment();
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle errors appropriately
+    }
+  };
+
+  const createPaymentIntent = async () => {
+    try {
       const jwtToken = await sessionStorage.getItem("jwtToken");
-      const response = await fetch(`${hostname}/user/handle-investor-payment/${user._id}`, 
-      {
+      const response = await fetch(`${hostname}/user/handle-investor-payment/${user._id}`, {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `${jwtToken}`
+          "Authorization": `${jwtToken}`,
         },
-        method: "POST",
-        body: JSON.stringify(formBody)
-      })
+        method: "POST"
+      });
       const session = await response.json();
-      if (session){
-        alert("Investment Successful!");
-        navigate("/invertorDashboard");
-      }
-      // const result = stripe.redirectToCheckout({
-      //   sessionId: session.id
-      // })
+      return session.clientSecret; 
     } catch (error) {
-      alert("Couldn't process payment!");
+      console.error(error);
+      alert("Error creating payment intent");
+      throw error;
     }
-  }
+  };
+
+
+
+  // const handleInvestmentPayment = async () => {
+  //   // const stripe = await loadStripe(user.stripePublishableKey);
+  //   const formBody = {
+  //     amount: user.amount,
+  //     distributorName: user.name,
+  //     companyName: user.companyName,
+  //   };
+
+  //   try {
+  //     const jwtToken = await sessionStorage.getItem("jwtToken");
+  //     const response = await fetch(
+  //       `${hostname}/user/handle-investor-payment/${user._id}`,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `${jwtToken}`,
+  //         },
+  //         method: "POST",
+  //         body: JSON.stringify(formBody),
+  //       }
+  //     );
+  //     const session = await response.json();
+  //     if (session) {
+  //       alert("Investment Successful!");
+  //       navigate("/invertorDashboard");
+  //     }
+  //     // const result = stripe.redirectToCheckout({
+  //     //   sessionId: session.id
+  //     // })
+  //   } catch (error) {
+  //     alert("Couldn't process payment!");
+  //   }
+  // };
   return (
     <div className="main-investnow">
       <h1 className="mb-4 text-4xl py-5 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl">
@@ -59,11 +121,16 @@ const navigate = useNavigate();
       </span>
 
       <span className="bg-red-300 mb-4 text-red-800 text-lg font-medium me-2 px-6 py-2 rounded">
-        {user.companyName} distributors are willing to share <b>{user.equity}%</b> equity of thier company
-        for investment of Rs. {user.amount}.
+        {user.companyName} distributors are willing to share{" "}
+        <b>{user.equity}%</b> equity of thier company for investment of Rs.{" "}
+        {user.amount}.
       </span>
 
-      <button onClick={handleInvestmentPayment} className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-black sm:w-fit hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300 mb-[10vh]">
+      <CardElement />
+      <button
+        onClick={handleInvestmentPayment}
+        className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-black sm:w-fit hover:bg-stone-900 focus:ring-4 focus:outline-none focus:ring-stone-300 mb-[10vh]"
+      >
         Proceed To Invest
       </button>
     </div>

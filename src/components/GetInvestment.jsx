@@ -28,7 +28,9 @@ const GetInvestment = () => {
       email === "" ||
       tagline === "" ||
       image === null ||
-      companyName === ""
+      companyName === "" ||
+      stripePrivateKey === "" ||
+      stripePublishableKey === ""
     ) {
       alert("Alert! Please fill the form completely.");
     } else {
@@ -48,6 +50,8 @@ const GetInvestment = () => {
             tagline,
             image: base64Image,
             companyName,
+            stripePrivateKey,
+            stripePublishableKey
           }),
         });
 

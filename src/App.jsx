@@ -14,6 +14,8 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import GetInvestment from "./components/GetInvestment";
 import DistributorSignIn from "./components/DistributorSignIn";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 const router = createBrowserRouter([
   {
@@ -37,10 +39,13 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const stripePromise = loadStripe(
+    "pk_test_51KTWMFEVHmVDTnULjXHngwm35tx5ob0i9KYzd0Yi8VajLKZe7OXepyfDkZ4khIa0s7gSVBBxRLDQ8DegUoLr5acK004DwmUPrY"
+  );
   return (
-    <>
+    <Elements stripe={stripePromise}>
       <RouterProvider router={router} />
-    </>
+    </Elements>
   );
 };
 

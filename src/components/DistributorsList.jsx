@@ -5,8 +5,19 @@ import { useEffect, useState } from "react";
 const DistributorsList = ({ user, products }) => {
   const [EXTENSION, setEXTENSION] = useState("");
   const navigate = useNavigate();
+  const [revenue, setRevenue] = useState(0);
+  const [predictedRevenue, setPredictedRevenue] = useState(0);
   useEffect(() => {
     setEXTENSION(getImageFormat(user.image));
+    
+    let userTotalRevenue = 0;
+    let userPrediction = 0;
+    products.map(product => {
+      userTotalRevenue = userTotalRevenue + product.totalRevenue;
+      userPrediction = userPrediction + product.predictedRevenue;
+      setRevenue(userTotalRevenue);
+      setPredictedRevenue(userPrediction);
+    })
   }, []);
 
   function getImageFormat(image) {
@@ -63,13 +74,13 @@ const DistributorsList = ({ user, products }) => {
             <div className="space-y-1">
               <span>Last month sales</span>
               <div className="flex justify-center items-center bg-pink-300 text-pink-800 text-md font-medium me-2 px-2.5 py-0.5 rounded">
-                Rs.NaN
+                Rs. {revenue ? revenue : 0}
               </div>
             </div>
             <div className="space-y-1">
               <span>Next month prediction</span>
               <div className="flex justify-center items-center bg-green-300 text-green-800 text-md font-medium me-2 px-2.5 py-0.5 rounded">
-                Rs.NaN
+                Rs. {predictedRevenue ? parseInt(predictedRevenue) : 0}
               </div>
             </div>
           </div>

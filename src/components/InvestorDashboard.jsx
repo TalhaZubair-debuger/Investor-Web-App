@@ -62,7 +62,7 @@ const InvestorDashboard = () => {
       <div className="antialiased bg-gray-50">
         <main className="p-4 h-auto pt-20">
           <span className="flex justify-center font-bold text-2xl mb-4">
-            Hi User!
+            Hi {investorData ? investorData.name : "User"}!
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             <div className="p-4 border-2 border-solid border-gray-300 shadow-md	bg-white rounded-lg h-32 md:h-64">
