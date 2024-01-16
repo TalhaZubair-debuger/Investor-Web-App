@@ -4,6 +4,12 @@ import Button from "./Button";
 import image1 from "../assets/distributor image.png";
 import story from "../assets/stanging-people.jpg";
 import appFeaturesImage from "../assets/Features.png";
+import alibaba from "../assets/Alibaba-Logo.png";
+import amazon from "../assets/Amazon_logo.svg.webp";
+import unilever from "../assets/Unilever_logo.png";
+import tibco from "../assets/tibco.png";
+import coke from "../assets/Coca.png";
+
 import { Link } from "react-router-dom";
 import TeamMember from "./TeamMember";
 
@@ -155,66 +161,6 @@ const Home = () => {
           Are you Investor ?
         </h4>
         <p className="text-xl">Here are few companies you can invest in</p>
-        {/* <Carousel className="py-20" responsive={responsive}>
-          <CarouselItem /> */}
-        {/* <div className="item-carousal-home">
-            <div className="company-name-carousal">M&P</div>
-            <div className="meta-desc-company-carousal">
-              We make sure to deliver deliberately.
-            </div>
-            <div className="investment-required-carousal">
-              Investment Required: <b>Rs.250000</b>
-            </div>
-            <button className="see-more-carousal">See More Info</button>
-          </div> */}
-
-        {/* 2 */}
-
-        {/* <div className="item-carousal-home">
-            <div className="company-name-carousal">M&P</div>
-            <div className="meta-desc-company-carousal">
-              We make sure to deliver deliberately.
-            </div>
-            <div className="investment-required-carousal">
-              Investment Required: <b>Rs.250000</b>
-            </div>
-            <button className="see-more-carousal">See More Info</button>
-          </div> */}
-
-        {/* <div className="item-carousal-home">
-            <div className="company-name-carousal">M&P</div>
-            <div className="meta-desc-company-carousal">
-              We make sure to deliver deliberately.
-            </div>
-            <div className="investment-required-carousal">
-              Investment Required: <b>Rs.250000</b>
-            </div>
-            <button className="see-more-carousal">See More Info</button>
-          </div>
-          <div className="item-carousal-home">
-            <div className="company-name-carousal">M&P</div>
-            <div className="meta-desc-company-carousal">
-              We make sure to deliver deliberately.
-            </div>
-            <div className="investment-required-carousal">
-              Investment Required: <b>Rs.250000</b>
-            </div>
-            <button className="see-more-carousal">See More Info</button>
-          </div>
-          <div className="item-carousal-home">
-            <div className="company-name-carousal">M&P</div>
-            <div className="meta-desc-company-carousal">
-              We make sure to deliver deliberately.
-            </div>
-            <div className="investment-required-carousal">
-              Investment Required: <b>Rs.250000</b>
-            </div>
-            <button className="see-more-carousal">See More Info</button>
-          </div>
-        </Carousel>
-        <Button>Explore More Companies</Button> */}
-
-        {/* ////////////////////////////  */}
 
         <div id="gallery" className="relative w-full" data-carousel="slide">
           {/* <!-- Carousel wrapper --> */}
@@ -222,8 +168,8 @@ const Home = () => {
             {/* <!-- Item 1 --> */}
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
               <img
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-                className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                src={alibaba}
+                className="absolute block lg:w-[800px] h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
@@ -233,32 +179,32 @@ const Home = () => {
               data-carousel-item="active"
             >
               <img
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
-                className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                src={amazon}
+                className="absolute block lg:w-[800px] h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
             {/* <!-- Item 3 --> */}
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
               <img
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
-                className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                src={unilever}
+                className="absolute block lg:w-[800px]  h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
             {/* <!-- Item 4 --> */}
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
               <img
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
-                className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                src={tibco}
+                className="absolute block lg:w-[800px]  h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
             {/* <!-- Item 5 --> */}
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
               <img
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
-                className="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                src={coke}
+                className="absolute block lg:w-[800px] h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                 alt=""
               />
             </div>
@@ -269,9 +215,9 @@ const Home = () => {
             className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
             data-carousel-prev
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
               <svg
-                className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                className="w-4 h-4 text-white rtl:rotate-180"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -293,7 +239,7 @@ const Home = () => {
             className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
             data-carousel-next
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
               <svg
                 className="w-4 h-4 text-white rtl:rotate-180"
                 aria-hidden="true"
@@ -316,7 +262,7 @@ const Home = () => {
       </section>
 
       <section className="bg-white">
-        <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto text-center  lg:px-6">
           <dl className="grid max-w-screen-md gap-8 mx-auto text-gray-900 sm:grid-cols-3">
             <div className="flex flex-col items-center justify-center">
               <dt className="mb-2 text-3xl md:text-4xl font-extrabold">73+</dt>

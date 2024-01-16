@@ -15,15 +15,14 @@ const NavBar = () => {
   const handleLogOut = () => {
     const jwtToken = sessionStorage.getItem("jwtToken");
     const bearer = jwtToken.slice()[0];
-    if (bearer === "Bearer-Investor"){
+    if (bearer === "Bearer-Investor") {
       navigate("/signin");
       sessionStorage.clear();
     } else {
-      navigate("/signin-distributor");
+      navigate("/signin");
       sessionStorage.clear();
     }
-
-  } 
+  };
   return (
     <nav className="bg-white border-gray-200">
       <div className="md:text-sm md:space-y-4 lg:space-y-0 lg:text-lg max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -70,7 +69,7 @@ const NavBar = () => {
             {isSignIn === true ? (
               <button onClick={handleLogOut}>LogOut</button>
             ) : (
-                <NavItem to="/signin">Sign In</NavItem>
+              <NavItem to="/signin">Sign In</NavItem>
             )}
           </ul>
         </div>
